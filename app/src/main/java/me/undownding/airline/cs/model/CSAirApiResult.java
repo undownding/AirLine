@@ -2,10 +2,12 @@ package me.undownding.airline.cs.model;
 
 import java.util.List;
 
+import me.undownding.airline.common.CommonApiModel;
+
 /**
  * Created by undownding on 2016/2/1.
  */
-public class CSAirApiResult {
+public class CSAirApiResult extends CommonApiModel {
 
     /**
      * airports : []
