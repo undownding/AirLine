@@ -1,5 +1,7 @@
 package me.undownding.airline.cs.model;
 
+import java.util.List;
+
 /**
  * Created by undownding on 2016/2/1.
  */
@@ -33,7 +35,7 @@ public class Flight {
     private String arrdate;
     private String arrport;
     private String arrtime;
-    private Cabin cabin;
+    private List<Cabin> cabin;
     private String codeshare;
     private String codeshareinfo;
     private String depdate;
@@ -68,7 +70,7 @@ public class Flight {
         this.arrtime = arrtime;
     }
 
-    public void setCabin(Cabin cabin) {
+    public void setCabin(List<Cabin> cabin) {
         this.cabin = cabin;
     }
 
@@ -156,7 +158,7 @@ public class Flight {
         return arrtime;
     }
 
-    public Cabin getCabin() {
+    public List<Cabin> getCabin() {
         return cabin;
     }
 

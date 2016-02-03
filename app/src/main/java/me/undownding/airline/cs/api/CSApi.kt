@@ -1,6 +1,8 @@
 package me.undownding.airline.cs.api
 
+import com.google.gson.Gson
 import me.undownding.airline.cs.model.CSAirApiResult
+import retrofit.http.Body
 import retrofit.http.Field
 import retrofit.http.FormUrlEncoded
 import retrofit.http.POST
@@ -23,20 +25,27 @@ interface CSApi {
      */
     @POST("/B2C40/query/jaxb/direct/query.ao")
     @FormUrlEncoded
-    fun query(@Field("depcity") depcity: String = "SHA",
-              @Field("arrcity") arrcity: String = "CAN",
-              @Field("flightdate") flightdate: String = "20160327",
-              @Field("adultnum") adultnum: Int = 1,
-              @Field("childnum") childnum: Int = 0,
-              @Field("infantnum") infantnum: Int = 0,
-              @Field("cabinorder") cabinorder: Int = 0,
-              @Field("airline") airline: Int = 1,
-              @Field("flytype") flytype: Int = 1,
-              @Field("international") international: Int = 0,
-              @Field("action") action: Int = 0,
-              @Field("segtype") segtype: Int = 1,
-              @Field("cache") cache: Int = 0,
-              @Field("preUrl") preUrl: String = "null",
-              @Field("isMember") isMember: String = ""
-              ): Observable<CSAirApiResult>
+    fun query(@Field("json") jsonArgs: String): Observable<CSAirApiResult>
+
+    public class QueryArgsBody(depcity: String, arrcity: String, flightdate: String) {
+        var depcity = "SHA"
+        var arrcity = "CAN"
+        var flightdate = "20160327"
+        var adultnum = 1
+        var childnum = 0
+        var infantnum = 0
+        var cabinorder = 0
+        var airline = 1
+        var flytype = 1
+        var international = 0
+        var action = 0
+        var segtype = 1
+        var cache = 0
+        var preUrl = "null"
+        var isMember = ""
+
+        fun toJson() : String {
+            return "${Gson().toJson(this)}"
+        }
+    }
 }
